@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "start to install hobot modules"
+
+exit 0
+
