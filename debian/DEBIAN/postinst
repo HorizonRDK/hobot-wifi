@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo "Install x3 sdb wifi drivers"
-
-depmod
+echo "Install x3 wifi drivers"
 
 systemctl enable hobot-wifi.service
 
