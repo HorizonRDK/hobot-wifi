@@ -16,6 +16,8 @@ do_load_wifi()
 		modprobe bcmdhd
 	elif [ ${som_name} == '6' ];then
 		modprobe 8723ds
+	elif [ ${som_name} == '8' ];then
+		modprobe 8821cs
 	fi
 }
 

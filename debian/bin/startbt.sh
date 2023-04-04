@@ -3,7 +3,7 @@
 som_name=$(cat /sys/class/socinfo/som_name)
 
 # reset bt
-if [ ${som_name} == '5' ] || [ ${som_name} == '6' ];then
+if [ ${som_name} == '5' ] || [ ${som_name} == '6' ] || [ ${som_name} == '8' ];then
 	# X3 PI
 	echo 57 > /sys/class/gpio/export
 	echo out > /sys/class/gpio/gpio57/direction
@@ -39,7 +39,7 @@ if [ ${som_name} == '5' ];then
 	brcm_patchram_plus --enable_hci --no2bytes --tosleep 200000 --baudrate 460800 --patchram /lib/firmware/brcm/BCM4343A1.hcd /dev/ttyS1 &
 elif [ ${som_name} == '6' ];then
 	rtk_hciattach -n -s 115200 ttyS1 rtk_h5 &
-elif [ ${som_name} == 'b' ];then
+elif [ ${som_name} == 'b' ] || [ ${som_name} == '8' ];then
 	rtk_hciattach -n -s 115200 ttyS1 rtk_h5 noflow &
 fi
 
