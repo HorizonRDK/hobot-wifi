@@ -12,8 +12,10 @@ main()
     SSID="$1"
     PASSWD="$2"
 
-    nmcli device wifi connect ${SSID} password ${PASSWD}
+    nmcli device wifi connect "${SSID}" password "${PASSWD}"
 
 }
 
-main $@
+args=("$@")
+main "${args[@]}"
+
