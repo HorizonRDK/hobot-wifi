@@ -1,4 +1,2 @@
 #!/bin/bash
-echo "prerm running"
 exit 0
-

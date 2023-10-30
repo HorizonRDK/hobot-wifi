@@ -18,7 +18,26 @@ do_load_wifi()
 		modprobe 8723ds
 	elif [ ${som_name} == '8' ];then
 		modprobe 8821cs
+		config_file="/boot/config.txt"
+		antenna_option="wifi_antenna"
+
+		if [ -f "$config_file" ]; then
+			antenna_value=$(grep -E "^$antenna_option=" "$config_file" | cut -d= -f2)
+
+			if [ -n "$antenna_value" ]; then
+				if [ "$antenna_value" = "cable" ]; then
+					/bin/switch_antenna cable
+				elif [ "$antenna_value" = "trace" ]; then
+					/bin/switch_antenna trace
+				else
+					echo "Unrecognized value for $antenna_option: $antenna_value"
+				fi
+			else
+				/bin/switch_antenna trace
+			fi
+		else
 		/bin/switch_antenna trace
+		fi
 	fi
 }
 
